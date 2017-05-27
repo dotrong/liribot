@@ -1,4 +1,6 @@
-//Ben key 40e9cece
+//Use Ben key 40e9cece for OMDB
+
+//require needed library
 
 var spotify = require('spotify');
 var twitter = require('twitter');
@@ -6,6 +8,8 @@ var request = require('request');
 var fs = require('fs');
 
 var keys = require('./keys.js');
+
+//getting what user want to do
 
 if (process.argv[2] === 'my-tweets') {
 
@@ -23,7 +27,7 @@ else if (process.argv[2] === 'spotify-this-song') {
   }
   title = title.replace(/\s$/, '');
   if (title == '') {
-    title = 'The Sign';
+    title = 'The Sign Ace of base';
   }
   getSongInfo(title);
 
@@ -37,6 +41,8 @@ else if (process.argv[2] === 'movie-this') {
     title += process.argv[i] + "+";
 
   }
+
+  //if title movie is empty
 
   if (title == '') {
 
@@ -71,6 +77,8 @@ else {
 //getSongInfo('The Sign');
 //getMovieInfo("the+departed");
 //readFile();
+
+//function to get movie information from omdb
 
 function getMovieInfo(movieTitle) {
 
@@ -119,6 +127,7 @@ function getMovieInfo(movieTitle) {
   });
 
 }
+//function to get song information from Spotify
 
 function getSongInfo(songName) {
 
@@ -160,6 +169,7 @@ function getSongInfo(songName) {
 
 }
 
+//get tweets
 function getTweets() {
 
   var client = new twitter({
@@ -195,6 +205,7 @@ function getTweets() {
   });
 
 }
+//read random.txt file.
 
 function readFile () {
 
@@ -235,7 +246,7 @@ function readFile () {
   });
 
 }
-
+//write to log.txt
 function writeToFile(message) {
 
   fs.appendFile('./log.txt', message , 'utf8', function(err) {
@@ -244,12 +255,3 @@ function writeToFile(message) {
 
   });
 }
-
-
-
-
-
-
-
-
-
